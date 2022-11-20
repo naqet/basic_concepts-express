@@ -6,6 +6,10 @@ export const getUserByEmail = async (email: string): Promise<User | null> => {
   return await db.user.findFirst({ where: { email } });
 };
 
+export const getUser = async (id: number): Promise<User | null> => {
+  return await db.user.findFirst({ where: { id } });
+};
+
 export const getAllUsers = async (): Promise<User[]> => {
   return await db.user.findMany();
 };

@@ -3,6 +3,7 @@ import {
   createUser,
   deleteUser,
   getAllUsers,
+  getUser,
   getUserByEmail,
 } from "../../repositories/user";
 import IUserPayload from "../../types/IUserPayload";
@@ -14,6 +15,10 @@ export default class UserController {
 
   public async getUserByEmail(email: string): Promise<User | null> {
     return getUserByEmail(email);
+  }
+
+  public async getUser(id: number): Promise<User | null> {
+    return getUser(id);
   }
 
   public async createUser(body: IUserPayload): Promise<User> {
