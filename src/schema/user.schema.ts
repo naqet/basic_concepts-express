@@ -13,3 +13,5 @@ export const createUserSchema = z
 		message: "Passwords do not match",
 		path: ["confirmPassword"],
 	});
+
+export type CreateUserInput = z.infer<typeof createUserSchema>;
