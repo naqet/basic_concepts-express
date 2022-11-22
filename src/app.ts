@@ -11,6 +11,6 @@ const app = express();
 app.use(bodyParser.json());
 
 app.listen(process.env.PORT || 1337, () => {
-  logger.info("App is running");
-  routes(app);
+	logger.info("App is running");
+	routes(app);
 });
