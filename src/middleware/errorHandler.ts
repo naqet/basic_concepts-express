@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { BaseError } from '../utils/baseError';
+import BaseError from '../utils/baseError';
 import logger from '../utils/logger';
 
 const errorHandler = (err: Error, res: Response) => {

@@ -8,19 +8,19 @@ import {
 import IPostPayload from '../../types/IPostPayload';
 
 export default class PostController {
-  public static async getAllPosts(): Promise<Post[]> {
+  public async getAllPosts(): Promise<Post[]> {
     return getAllPosts();
   }
 
-  public static async getPost(id: number): Promise<Post | null> {
+  public async getPost(id: number): Promise<Post | null> {
     return getPost(id);
   }
 
-  public static async createPost(body: IPostPayload): Promise<Post | null> {
+  public async createPost(body: IPostPayload): Promise<Post | null> {
     return createPost(body);
   }
 
-  public static async deletePost(id: number): Promise<Post> {
+  public async deletePost(id: number): Promise<Post> {
     return deletePost(id);
   }
 }

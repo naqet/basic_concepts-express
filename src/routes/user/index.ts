@@ -1,7 +1,5 @@
 import { Router } from 'express';
 import UserController from '../../controllers/user';
-import validateRequest from '../../middleware/validateResource';
-import { createUserSchema } from '../../schema/user.schema';
 import BaseError from '../../utils/baseError';
 
 const router = Router();
@@ -30,15 +28,5 @@ router.get('/:id', async (req, res, next): Promise<void> => {
     next(err);
   }
 });
-
-router.post(
-  '/',
-  validateRequest(createUserSchema),
-  async (req, res): Promise<void> => {
-    const controller = new UserController();
-    const response = await controller.createUser(req.body);
-    res.send(response);
-  },
-);
 
 export default router;
