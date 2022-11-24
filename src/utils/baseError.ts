@@ -1,5 +1,6 @@
-export class BaseError extends Error {
+export default class BaseError extends Error {
   public readonly statusCode: number;
+
   public readonly message: string;
 
   constructor(statusCode: number, message: string) {

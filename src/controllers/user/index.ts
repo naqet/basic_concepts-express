@@ -1,12 +1,12 @@
-import { User } from "@prisma/client";
+import { User } from '@prisma/client';
 import {
   createUser,
   deleteUser,
   getAllUsers,
   getUser,
   getUserByEmail,
-} from "../../repositories/user";
-import IUserPayload from "../../types/IUserPayload";
+} from '../../repositories/user';
+import IUserPayload from '../../types/IUserPayload';
 
 export default class UserController {
   public async getAllUsers(): Promise<User[]> {

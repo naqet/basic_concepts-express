@@ -1,5 +1,5 @@
 export default interface IUserPayload {
-	email: string;
-	name?: string;
-	passwordHash: string;
+  email: string;
+  name?: string;
+  passwordHash: string;
 }

@@ -1,10 +1,10 @@
-import * as dotenv from "dotenv";
-dotenv.config();
+import * as dotenv from 'dotenv';
+import express, { NextFunction, Request, Response } from 'express';
+import logger from './utils/logger';
+import routes from './routes';
+import errorHandler from './middleware/errorHandler';
 
-import logger from "./utils/logger";
-import express, { NextFunction, Request, Response } from "express";
-import routes from "./routes";
-import errorHandler from "./middleware/errorHandler";
+dotenv.config();
 
 const app = express();
 
@@ -20,5 +20,5 @@ app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
 });
 
 app.listen(process.env.PORT || 1337, () => {
-  logger.info("App is running");
+  logger.info('App is running');
 });

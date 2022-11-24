@@ -1,26 +1,26 @@
-import { Post } from "@prisma/client";
+import { Post } from '@prisma/client';
 import {
   createPost,
   deletePost,
   getAllPosts,
   getPost,
-} from "../../repositories/post";
-import IPostPayload from "../../types/IPostPayload";
+} from '../../repositories/post';
+import IPostPayload from '../../types/IPostPayload';
 
 export default class PostController {
-  public async getAllPosts(): Promise<Post[]> {
+  public static async getAllPosts(): Promise<Post[]> {
     return getAllPosts();
   }
 
-  public async getPost(id: number): Promise<Post | null> {
+  public static async getPost(id: number): Promise<Post | null> {
     return getPost(id);
   }
 
-  public async createPost(body: IPostPayload): Promise<Post | null> {
+  public static async createPost(body: IPostPayload): Promise<Post | null> {
     return createPost(body);
   }
 
-  public async deletePost(id: number): Promise<Post> {
+  public static async deletePost(id: number): Promise<Post> {
     return deletePost(id);
   }
 }

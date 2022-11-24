@@ -1,9 +1,9 @@
-import pino from "pino";
+import pino from 'pino';
 
 const logger = pino({
   transport: {
-    target: "pino-pretty",
-    options: { translateTime: true, ignore: "pid,hostname" },
+    target: 'pino-pretty',
+    options: { translateTime: true, ignore: 'pid,hostname' },
   },
 });
 
