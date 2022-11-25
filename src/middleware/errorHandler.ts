@@ -5,7 +5,6 @@ import logger from '../utils/logger';
 const errorHandler = (err: Error, res: Response) => {
   if (err instanceof BaseError) {
     res.status(err.statusCode).send({
-      status: 'error',
       message: err.message,
     });
     return;
@@ -13,7 +12,6 @@ const errorHandler = (err: Error, res: Response) => {
 
   logger.error(err.message);
   res.status(500).send({
-    status: 'error',
     message: 'Internal server error',
   });
 };

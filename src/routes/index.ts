@@ -4,11 +4,12 @@ import userRoute from './user';
 import postRoute from './post';
 import commentRoute from './comment';
 import authRoute from './auth';
+import authValidator from '../middleware/authValidator';
 
 export default function routes(app: Express) {
   app.use('/healthcheck', healthcheckRoute);
-  app.use('/user', userRoute);
-  app.use('/post', postRoute);
-  app.use('/comment', commentRoute);
+  app.use('/user', authValidator(), userRoute);
+  app.use('/post', authValidator(), postRoute);
+  app.use('/comment', authValidator(), commentRoute);
   app.use('/auth', authRoute);
 }
