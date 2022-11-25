@@ -3,10 +3,10 @@ export default class BaseError extends Error {
 
   public readonly message: string;
 
-  constructor(statusCode: number, message: string) {
+  constructor(statusCode: number, message?: string) {
     super(message);
     this.statusCode = statusCode;
-    this.message = message;
+    this.message = message ?? '';
     Object.setPrototypeOf(this, new.target.prototype);
 
     Error.captureStackTrace(this);

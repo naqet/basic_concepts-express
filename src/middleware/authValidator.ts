@@ -7,7 +7,7 @@ const authValidator = () => (_req: Request, res: Response, next: NextFunction) =
     const token = res?.locals?.cookie?.token;
 
     jwt.verify(token, process.env.JWT_SECRET as jwt.Secret, (err: VerifyErrors | null, decoded: any) => {
-      if (err) throw new BaseError(401, 'Unauthorized');
+      if (err) throw new BaseError(401);
       res.locals.user = decoded;
     });
 
