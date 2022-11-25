@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import CommentController from '../../controllers/comment';
+import CommentController from '../../controllers/comments';
 import validateParams from '../../middleware/validateParams';
 import BaseError from '../../utils/baseError';
 

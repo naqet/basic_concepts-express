@@ -1,7 +1,7 @@
 import { User } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { createUser, getUserByEmail } from '../../repositories/user';
+import { createUser, getUserByEmail } from '../../repositories/users';
 import { LoginInput, RegisterInput } from '../../schema/auth.schema';
 import BaseError from '../../utils/baseError';
 

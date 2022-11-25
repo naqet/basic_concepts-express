@@ -5,10 +5,10 @@ import {
   getAllUsers,
   getUser,
   getUserByEmail,
-} from '../../repositories/user';
+} from '../../repositories/users';
 import IUserPayload from '../../types/IUserPayload';
 
-export default class UserController {
+export default class UsersController {
   public async getAllUsers(): Promise<User[]> {
     return getAllUsers();
   }

@@ -4,10 +4,10 @@ import {
   deletePost,
   getAllPosts,
   getPost,
-} from '../../repositories/post';
+} from '../../repositories/posts';
 import IPostPayload from '../../types/IPostPayload';
 
-export default class PostController {
+export default class PostsController {
   public async getAllPosts(): Promise<Post[]> {
     return getAllPosts();
   }

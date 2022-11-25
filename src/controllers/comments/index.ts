@@ -3,10 +3,10 @@ import {
   createComment,
   deleteComment,
   getComment,
-} from '../../repositories/comment';
+} from '../../repositories/comments';
 import ICommentPayload from '../../types/ICommentPayload';
 
-export default class CommentController {
+export default class CommentsController {
   public async getComment(id: number): Promise<Comment | null> {
     return getComment(id);
   }
