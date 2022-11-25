@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import AuthController from '../../controllers/auth';
-import validateRequest from '../../middleware/validateRequest';
+import validateBody from '../../middleware/validateBody';
 import { loginSchema, registerSchema } from '../../schema/auth.schema';
 
 const router = Router();
 
-router.post('/register', validateRequest(registerSchema), async (req, res, next): Promise<void> => {
+router.post('/register', validateBody(registerSchema), async (req, res, next): Promise<void> => {
   try {
     const controller = new AuthController();
     await controller.register(req.body);
@@ -15,7 +15,7 @@ router.post('/register', validateRequest(registerSchema), async (req, res, next)
   }
 });
 
-router.post('/login', validateRequest(loginSchema), async (req, res, next): Promise<void> => {
+router.post('/login', validateBody(loginSchema), async (req, res, next): Promise<void> => {
   try {
     const controller = new AuthController();
     const token = await controller.login(req.body);

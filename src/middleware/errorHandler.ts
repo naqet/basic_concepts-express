@@ -6,7 +6,6 @@ const errorHandler = (err: Error, res: Response) => {
   if (err instanceof BaseError) {
     res.status(err.statusCode).send({
       status: 'error',
-      statusCode: err.statusCode,
       message: err.message,
     });
     return;
@@ -15,7 +14,6 @@ const errorHandler = (err: Error, res: Response) => {
   logger.error(err.message);
   res.status(500).send({
     status: 'error',
-    statusCode: 500,
     message: 'Internal server error',
   });
 };

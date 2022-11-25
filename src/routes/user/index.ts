@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import UserController from '../../controllers/user';
+import validateParams from '../../middleware/validateParams';
 import BaseError from '../../utils/baseError';
 
 const router = Router();
@@ -14,7 +15,7 @@ router.get('/', async (_req, res, next): Promise<void> => {
   }
 });
 
-router.get('/:id', async (req, res, next): Promise<void> => {
+router.get('/:id', validateParams({ id: 'number' }), async (req, res, next): Promise<void> => {
   try {
     const controller = new UserController();
     const response = await controller.getUser(Number(req.params.id));

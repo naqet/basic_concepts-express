@@ -1,27 +1,41 @@
 import { Router } from 'express';
 import CommentController from '../../controllers/comment';
+import validateParams from '../../middleware/validateParams';
+import BaseError from '../../utils/baseError';
 
 const router = Router();
 
-router.get('/:id', async (req, res) => {
-  const controller = new CommentController();
-  const response = await controller.getComment(Number(req.params.id));
+router.get('/:id', validateParams({ id: 'number' }), async (req, res, next) => {
+  try {
+    const controller = new CommentController();
+    const response = await controller.getComment(Number(req.params.id));
 
-  if (!response) return res.status(404).send({ message: 'Comment not found' });
+    if (!response) throw new BaseError(404, 'Comment not found');
 
-  return res.send(response);
+    res.send(response);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.post('/', async (req, res) => {
-  const controller = new CommentController();
-  const response = await controller.createComment(req.body);
-  return res.send(response);
+router.post('/', async (req, res, next) => {
+  try {
+    const controller = new CommentController();
+    const response = await controller.createComment(req.body);
+    res.send(response);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.delete('/:id', async (req, res) => {
-  const controller = new CommentController();
-  const response = await controller.deleteComment(Number(req.params.id));
-  return res.send(response);
+router.delete('/:id', validateParams({ id: 'number' }), async (req, res, next) => {
+  try {
+    const controller = new CommentController();
+    const response = await controller.deleteComment(Number(req.params.id));
+    res.send(response);
+  } catch (err) {
+    next(err);
+  }
 });
 
 export default router;

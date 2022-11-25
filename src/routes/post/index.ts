@@ -1,35 +1,53 @@
 import { Router } from 'express';
 import PostController from '../../controllers/post';
-import validateRequest from '../../middleware/validateRequest';
+import validateBody from '../../middleware/validateBody';
+import validateParams from '../../middleware/validateParams';
 import { createPostSchema } from '../../schema/post.schema';
+import BaseError from '../../utils/baseError';
 
 const router = Router();
 
-router.get('/', async (_req, res) => {
-	const controller = new PostController();
-	const response = await controller.getAllPosts();
-	return res.send(response);
+router.get('/', async (_req, res, next) => {
+  try {
+    const controller = new PostController();
+    const response = await controller.getAllPosts();
+    res.send(response);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get('/:id', async (req, res) => {
-	const controller = new PostController();
-	const response = await controller.getPost(Number(req.params.id));
+router.get('/:id', validateParams({ id: 'number' }), async (req, res, next) => {
+  try {
+    const controller = new PostController();
+    const response = await controller.getPost(Number(req.params.id));
 
-	if (!response) return res.status(404).send({ message: 'Post not found' });
+    if (!response) throw new BaseError(404, 'Post not found');
 
-	return res.send(response);
+    res.send(response);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.post('/', validateRequest(createPostSchema), async (req, res) => {
-	const controller = new PostController();
-	const response = await controller.createPost(req.body);
-	return res.send(response);
+router.post('/', validateBody(createPostSchema), async (req, res, next) => {
+  try {
+    const controller = new PostController();
+    const response = await controller.createPost(req.body);
+    res.send(response);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.delete('/:id', async (req, res) => {
-	const controller = new PostController();
-	const response = await controller.deletePost(Number(req.params.id));
-	return res.send(response);
+router.delete('/:id', validateParams({ id: 'number' }), async (req, res, next) => {
+  try {
+    const controller = new PostController();
+    const response = await controller.deletePost(Number(req.params.id));
+    res.send(response);
+  } catch (err) {
+    next(err);
+  }
 });
 
 export default router;
