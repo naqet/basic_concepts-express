@@ -3,6 +3,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import logger from './utils/logger';
 import routes from './routes';
 import errorHandler from './middleware/errorHandler';
+import cookieHandler from './middleware/cookieHandler';
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ const app = express();
 
 // Parse JSON
 app.use(express.json());
+
+// Cookie handler
+app.use(cookieHandler());
 
 // Routes
 routes(app);
