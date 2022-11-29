@@ -63,6 +63,33 @@ describe('UsersController', () => {
     });
   });
 
+  describe('getUser', () => {
+    it('should return null when no user found', async () => {
+      const spy = jest
+        .spyOn(UsersRepository, 'getUser')
+        .mockResolvedValueOnce(null);
+      const controller = new UsersController();
+      const user = await controller.getUser(1);
+
+      expect(user).toBeNull();
+      expect(spy).toHaveBeenCalledWith(1);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should return user', async () => {
+      const userInfo = generateUserData();
+      const spy = jest
+        .spyOn(UsersRepository, 'getUser')
+        .mockResolvedValueOnce(userInfo);
+      const controller = new UsersController();
+      const user = await controller.getUser(1);
+
+      expect(user).toEqual(userInfo);
+      expect(spy).toHaveBeenCalledWith(1);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('createUser', () => {
     it('should return user after adding it to the db', async () => {
       const userData = generateUserData();

@@ -24,8 +24,4 @@ export default class UsersController {
   public async createUser(body: IUserPayload): Promise<User> {
     return createUser(body);
   }
-
-  public async deleteUser(id: number): Promise<User> {
-    return deleteUser(id);
-  }
 }

@@ -15,5 +15,3 @@ export const createUser = async (payload: IUserPayload): Promise<User> => db.use
     passwordHash: payload.passwordHash,
   },
 });
-
-export const deleteUser = async (id: number): Promise<User> => db.user.delete({ where: { id } });
