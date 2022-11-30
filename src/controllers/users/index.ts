@@ -1,7 +1,6 @@
 import { User } from '@prisma/client';
 import {
   createUser,
-  deleteUser,
   getAllUsers,
   getUser,
   getUserByEmail,
