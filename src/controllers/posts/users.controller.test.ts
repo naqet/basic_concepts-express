@@ -77,4 +77,19 @@ describe('PostsController', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('deletePost', () => {
+    it('should return post after deleting it from the db', async () => {
+      const postData = generatePostData();
+      const spy = jest
+        .spyOn(PostsRepository, 'deletePost')
+        .mockResolvedValueOnce(postData);
+      const controller = new PostsController();
+      const post = await controller.deletePost(postData.id);
+
+      expect(post).toEqual(postData);
+      expect(spy).toHaveBeenCalledWith(postData.id);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
 });
