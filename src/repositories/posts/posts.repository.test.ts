@@ -29,7 +29,7 @@ describe('Posts repository', () => {
       await expect(getPost(1234)).resolves.toEqual(null);
     });
 
-    it('it should return posts array', async () => {
+    it('it should return post', async () => {
       const post = generatePostData();
       prismaMock.post.findFirst.mockResolvedValue(post);
 
