@@ -1,7 +1,7 @@
 import {
   generateCommentData,
 } from '../../utils/tests/generate';
-import { prismaMock } from '../../__mocks__/prisma';
+import prismaMock from '../../__mocks__/prisma';
 import {
   getComment, createComment, deleteComment,
 } from './index';

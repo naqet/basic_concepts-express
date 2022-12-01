@@ -1,7 +1,7 @@
 import {
   generatePostData, generatePostsData,
 } from '../../utils/tests/generate';
-import { prismaMock } from '../../__mocks__/prisma';
+import prismaMock from '../../__mocks__/prisma';
 import {
   getAllPosts, getPost, deletePost, createPost,
 } from './index';

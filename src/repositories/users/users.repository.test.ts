@@ -1,5 +1,5 @@
 import { generateUserData, generateUsersData } from '../../utils/tests/generate';
-import { prismaMock } from '../../__mocks__/prisma';
+import prismaMock from '../../__mocks__/prisma';
 import {
   getAllUsers, getUser, getUserByEmail, createUser,
 } from './index';

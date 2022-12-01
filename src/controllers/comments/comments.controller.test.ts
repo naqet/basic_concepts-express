@@ -1,4 +1,4 @@
-import { generateCommentData, generateCommentsData } from '../../utils/tests/generate';
+import { generateCommentData } from '../../utils/tests/generate';
 import CommentsController from '.';
 import * as CommentsRepository from '../../repositories/comments';
 

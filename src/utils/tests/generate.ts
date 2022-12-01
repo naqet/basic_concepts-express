@@ -33,5 +33,3 @@ export const generateCommentData = (override: any = {}): Comment => ({
   updatedAt: new Date(),
   ...override,
 });
-
-export const generateCommentsData = (commentsNumber: number): Comment[] => Array.from({ length: commentsNumber }, () => generateCommentData());
